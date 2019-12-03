@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@section scripts {
+    <script src="~/bundles/jqueryval"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}
+
+<div id="CreateDiv">
+    @Html.Action("Create")
+</div>
+
+<h2>留言板</h2>
+<div id="Message">
+    @Html.Action("List")
+</div>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

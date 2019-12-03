@@ -1,0 +1,27 @@
+﻿@model MessageBoard.Models.Message
+
+<h2>新增留言</h2>
+
+@using(Ajax.BeginForm("CreateMessage", new { Controller="Home"}, new AjaxOptions { UpdateTargetId="Message", HttpMethod="post", OnComplete="reset"}, new { @autocomplete = "off", @id="CreateForm"}))
+{
+    <div class="form-inline">
+        @Html.LabelFor(model => model.Name) &nbsp;&nbsp;
+        @Html.TextBoxFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    <div class="form-inline">
+        @Html.LabelFor(model => model.Content)
+        @Html.TextBoxFor(model => model.Content)
+        @Html.ValidationMessageFor(model => model.Content)
+    </div>
+    <input type="submit" class="btn" value="新增留言" />
+}
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    function reset() {
+        document.getElementById("CreateForm").reset()
+    }
+</script>

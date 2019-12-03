@@ -1,0 +1,32 @@
+﻿@model MessageBoard.ViewModels.MessageViewModel
+
+    <table class="table" id="Message">
+        @if (!Model.DataList.Count.Equals(0))
+        {
+            <tr>
+                <th>留言者</th>
+                <th>留言內容</th>
+                <th>留言時間</th>
+                <th></th>
+            </tr>
+            foreach (var item in Model.DataList)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Content</td>
+                    <td>@item.Create_Time</td>
+                    <td>
+                        @Html.ActionLink("編輯", "Edit", new { Id = item.Id })
+                        @Ajax.ActionLink("刪除", "Delete", new { Controller = "Home", Id = item.Id }, new AjaxOptions { HttpMethod = "post", UpdateTargetId = "Message" })
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td rowspan="4">資料庫查無資料</td>
+            </tr>
+        }
+
+    </table>
